@@ -1,0 +1,30 @@
+#!/bin/sh
+
+RSYNC=/usr/bin/rsync 
+SSH=/usr/bin/ssh 
+KEY=/home/lab-mfc/cron/xnat-rsync-key 
+RUSER=lab-mfc 
+RHOST=drobo02 
+LCRONPATH=/home/lab-mfc/cron
+
+echo "XNAT-DB databese data directory backup on Drobo02"
+echo "rsync started on" `date`
+
+# rsync-archiveOnDrobo02-backup
+echo "Backing up XNAT-DB/archive directory"
+$LCRONPATH/rsync-archiveOnDrobo02-backup
+
+# rsync-cacheOnDrobo02-backup
+echo "Backing up XNAT-DB/cache directory"
+$LCRONPATH/rsync-cacheOnDrobo02-backup
+
+# rsync-ftpOnDrobo02-backup
+echo "Backing up XANT-DB/ftp directory"
+$LCRONPATH/rsync-ftpOnDrobo02-backup
+
+# rsync-prearchiveOnDrobo02-backup
+echo "Backing up XNAT-DB/prearchive directory"
+$LCRONPATH/rsync-prearchiveOnDrobo02-backup
+
+echo "rsync ended on" `date`
+# #### End bacup on Drobo02 using rsync
