@@ -1,0 +1,25 @@
+# Folowing the instructions at 
+# first we generated de SSH Keys for xnat server to copy them at the Drobo02
+#
+#
+
+# at Drobo02 using the xnat account we executed the 
+# following comands
+
+$ if [ ! -d .ssh ]; then mkdir .ssh ; chmod 700 .ssh ; fi
+$ mv xnat-rsync-key.pub .ssh/
+$ cd .ssh/
+$ if [ ! -f authorized_keys ]; then touch authorized_keys ; chmod 600 authorized_keys ; fi
+$ cat xnat-rsync-key.pub >> authorized_keys
+# then modify the authorized_keys accordingly
+
+# ############### CRON ############################################
+# For the cron line we are using:
+# Using crontab (crontab -e) we programed a backup to rsync on the Drobo02 
+# with the script rsync-OnDrobo02 and the >> to route the
+# output to the log file rsync-OnDrobo02.log is:
+
+0 4 * * * /bin/sh /Users/barrios/cron/rsync-OnDrobo02 2>&1 >>/Users/barrios/cron/rsync-OnDrobo02.log
+# everyday at four in the morning we rsync all the XNAT-DB to the drobo02 using the account xnat
+# the rsync is done by subdirectory: archive, prearchive, ftp, cache
+# ###################################################################
