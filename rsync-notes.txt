@@ -1,10 +1,11 @@
-# Folowing the instructions at 
+# Folowing the instructions at http://troy.jdmz.net/rsync/index.html
 # first we generated de SSH Keys for xnat server to copy them at the Drobo02
-#
-#
+# generate the key without passcode
+# $ ssh-keygen -t rsa -b 2048 -f /home/thisuser/cron/thishost-rsync-key
+# then
+# $ scp /home/thisuser/cron/thishost-rsync-key.pub remoteuser@remotehost:/home/remoteuser/
 
-# at Drobo02 using the xnat account we executed the 
-# following comands
+# at Drobo02 using the xnat account we executed the following comands
 
 $ if [ ! -d .ssh ]; then mkdir .ssh ; chmod 700 .ssh ; fi
 $ mv xnat-rsync-key.pub .ssh/
@@ -13,13 +14,27 @@ $ if [ ! -f authorized_keys ]; then touch authorized_keys ; chmod 600 authorized
 $ cat xnat-rsync-key.pub >> authorized_keys
 # then modify the authorized_keys accordingly
 
+# ################## scripts fo running rsync the XNAT-DB subdirectory by subdirectory
+# One of the scripts at the Xnat server is:
+# #######################################################
+RSYNC=/usr/bin/rsync 
+SSH=/usr/bin/ssh 
+KEY=/home/lab-mfc/cron/xnat-rsync-key 
+RUSER=xnat 
+RHOST=drobo02 
+RPATH=/mnt/DroboFS/home/xnat/backups/XNAT-DB
+LPATH=/home/lab-mfc/XNAT-DB/archive
+
+$RSYNC -az -e "$SSH -i $KEY" $LPATH $RUSER@$RHOST:$RPATH
+# ########################################################
+
 # ############### CRON ############################################
 # For the cron line we are using:
 # Using crontab (crontab -e) we programed a backup to rsync on the Drobo02 
 # with the script rsync-OnDrobo02 and the >> to route the
 # output to the log file rsync-OnDrobo02.log is:
 
-0 4 * * * /bin/sh /Users/barrios/cron/rsync-OnDrobo02 2>&1 >>/Users/barrios/cron/rsync-OnDrobo02.log
+0 4 * * * /bin/sh /home/lac-mfc/cron/rsync-OnDrobo02 2>&1 >>/home/lab-mfc/cron/rsync-OnDrobo02.log
 # everyday at four in the morning we rsync all the XNAT-DB to the drobo02 using the account xnat
 # the rsync is done by subdirectory: archive, prearchive, ftp, cache
 # ###################################################################
