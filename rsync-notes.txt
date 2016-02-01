@@ -5,6 +5,10 @@
 # then
 # $ scp /home/thisuser/cron/thishost-rsync-key.pub remoteuser@remotehost:/home/remoteuser/
 
+# At the drobo the rsync must be installed and running, also the OpenSSH.  Following the 
+DroboApps install instructions. An account on the Drobo02 was created for the xnat adminitrator
+for excecuting the rsync proccesses
+
 # at Drobo02 using the xnat account we executed the following comands
 
 $ if [ ! -d .ssh ]; then mkdir .ssh ; chmod 700 .ssh ; fi
@@ -13,6 +17,13 @@ $ cd .ssh/
 $ if [ ! -f authorized_keys ]; then touch authorized_keys ; chmod 600 authorized_keys ; fi
 $ cat xnat-rsync-key.pub >> authorized_keys
 # then modify the authorized_keys accordingly
+
+
+At http://troy.jdmz.net/rsync/index.html recomends using a validate-rsync script that 
+must be copied to the system that receives the rsync.  THe script is on this repository,
+At this point needs more revisions.  It ust be included at the authirized_keys call.
+
+
 
 # ################## scripts fo running rsync the XNAT-DB subdirectory by subdirectory
 # One of the scripts at the Xnat server is:
