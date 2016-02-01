@@ -7,8 +7,9 @@ RUSER=lab-mfc
 RHOST=drobo02 
 LCRONPATH=/home/lab-mfc/cron
 
+# #### Beginnig of bacup on Drobo02 using rsync
 echo "*************************************************"
-echo "XNAT-DB databese data directory backup on Drobo02"
+echo "XNAT-DB databese directory backup on Drobo02"
 echo "rsync STARTED on" `date`
 
 # rsync-archiveOnDrobo02-backup
@@ -28,6 +29,6 @@ echo "Backing up XNAT-DB/prearchive directory"
 $LCRONPATH/rsync-prearchiveOnDrobo02-backup
 echo "***************************************"
 
+# #### End bacup on Drobo02 using rsync
 echo "rsync ENDED on" `date`
 echo "*************************************************"
-# #### End bacup on Drobo02 using rsync
