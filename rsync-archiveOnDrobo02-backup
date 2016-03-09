@@ -8,4 +8,4 @@ RHOST=drobo02
 RPATH=/mnt/DroboFS/home/xnat/backups/XNAT-DB
 LPATH=/home/lab-mfc/XNAT-DB/archive
 
-$RSYNC -az -e "$SSH -i $KEY" $LPATH $RUSER@$RHOST:$RPATH
+$RSYNC -azh -e "$SSH -i $KEY" $LPATH $RUSER@$RHOST:$RPATH
