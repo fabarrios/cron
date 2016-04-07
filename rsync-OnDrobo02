@@ -1,11 +1,12 @@
 #!/bin/sh
 
+# This are the new identifiers for the new Dell server Apr 2016
 RSYNC=/usr/bin/rsync 
 SSH=/usr/bin/ssh 
-KEY=/home/lab-mfc/cron/xnat-rsync-key 
-RUSER=lab-mfc 
+KEY=/home/xnat/cron/dharma-rsync-key 
+RUSER=xnat 
 RHOST=drobo02 
-LCRONPATH=/home/lab-mfc/cron
+LCRONPATH=/home/xnat/cron
 
 # #### Beginnig of bacup on Drobo02 using rsync
 echo "*************************************************"
