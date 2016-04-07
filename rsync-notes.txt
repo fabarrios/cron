@@ -46,6 +46,8 @@ $RSYNC -az -e "$SSH -i $KEY" $LPATH $RUSER@$RHOST:$RPATH
 # output to the log file rsync-OnDrobo02.log is:
 
 0 4 * * * /bin/sh /home/lac-mfc/cron/rsync-OnDrobo02 2>&1 >>/home/lab-mfc/cron/rsync-OnDrobo02.log
+uptodate
+0 4 * * * /bin/sh /home/xnat/cron/rsync-OnDrobo02 2>&1 >>/home/xnat/cron/rsync-OnDrobo.log
 # everyday at four in the morning we rsync all the XNAT-DB to the drobo02 using the account xnat
 # the rsync is done by subdirectory: archive, prearchive, ftp, cache
 # ###################################################################
