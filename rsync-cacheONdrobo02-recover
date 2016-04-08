@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+
+RSYNC=/usr/bin/rsync 
+SSH=/usr/bin/ssh 
+KEY=/home/xnat/cron/dharma-rsync-key 
+RUSER=xnat 
+RHOST=drobo02 
+RPATH=/mnt/DroboFS/home/xnat/backups/XNAT-DB/cache
+LPATH=/data/XNAT-DB/
+
+$RSYNC -avz -e "$SSH -i $KEY" $RUSER@$RHOST:$RPATH $LPATH
