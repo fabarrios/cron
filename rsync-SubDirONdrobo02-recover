@@ -1,0 +1,16 @@
+#!/bin/sh
+#
+# Procedure to recover a subdirectory from the full rsync
+# of the archive directory on Drobo02
+# useful to recover only a subdirectory from the full
+# backup on the Drobo system.
+
+RSYNC=/usr/bin/rsync 
+SSH=/usr/bin/ssh 
+KEY=/home/xnat/cron/dharma-rsync-key 
+RUSER=xnat 
+RHOST=drobo02 
+RPATH=/mnt/DroboFS/home/xnat/backups/XNAT-DB/archive/homunculus
+LPATH=/data/XNAT-DB/archive/
+
+$RSYNC -avz -e "$SSH -i $KEY" $RUSER@$RHOST:$RPATH $LPATH
