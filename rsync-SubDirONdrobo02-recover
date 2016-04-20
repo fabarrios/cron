@@ -11,6 +11,6 @@ KEY=/home/xnat/cron/dharma-rsync-key
 RUSER=xnat 
 RHOST=drobo02 
 RPATH=/mnt/DroboFS/home/xnat/backups/XNAT-DB/archive/homunculus
-LPATH=/data/XNAT-DB/archive/
+LPATH=/data/XNAT-DB/prearchive/
 
 $RSYNC -avz -e "$SSH -i $KEY" $RUSER@$RHOST:$RPATH $LPATH
