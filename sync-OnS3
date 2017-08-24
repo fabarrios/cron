@@ -1,1 +1,9 @@
+#!
+# Using rclone to synt to an s3 bucket
+#
 
+# Backing up dharma /data/XNAT-DB/prearchive
+rclone sync /data/XNAT-DB/prearchive/ s3remote:fab-dharma-backup/XNAT-DB/prearchive
+
+# Backing up dharma /data/XNAT-DB/cache
+rclone sync /data/XNAT-DB/cache/ s3remote:fab-dharma-backup/XNAT-DB/cache
