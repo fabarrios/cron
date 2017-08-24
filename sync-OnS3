@@ -3,12 +3,44 @@
 # This are the new identifiers for Dharma
 RCLONE=/usr/bin/rclone
 LCRONPATH=/home/xnat/cron
-
 # Using rclone to synt to an s3 bucket
-#
+# #### Beginnig of bacup on s3 using rclone sync ******
 
-# Backing up dharma /data/XNAT-DB/prearchive
-rclone sync /data/XNAT-DB/prearchive/ s3remote:fab-dharma-backup/XNAT-DB/prearchive
+# Starting with archive
+echo "*** Archive **************************************"
+echo "XNAT-DB databese directory backup on s3:fab-dharma-backup"
+echo "rclone sync of archive STARTED on" `date`
+echo "**   ************************************    ****"
+echo "Backing up XNAT-DB/archive directory"
+/usr/bin/rclone sync /data/XNAT-DB/archive/ s3remote:fab-dharma-backup/XNAT-DB/archive
+echo "rclone sync of archive FINISHED on" `date`
+echo "***************************************"
+#
+# Next the prearchive
+echo "*** PreArchive ***********************************"
+echo "XNAT-DB databese directory backup on s3:fab-dharma-backup"
+echo "rclone sync of prearchive STARTED on" `date`
+echo "**   ************************************    ****"
+echo "Backing up XNAT-DB/archive directory"
+/usr/bin/rclone sync /data/XNAT-DB/prearchive/ s3remote:fab-dharma-backup/XNAT-DB/prearchive
+echo "rclone sync of prearchive FINISHED on" `date`
+echo "***************************************"
 
 # Backing up dharma /data/XNAT-DB/cache
-rclone sync /data/XNAT-DB/cache/ s3remote:fab-dharma-backup/XNAT-DB/cache
+# Next the cache
+echo "*** Cache ***********************************"
+echo "XNAT-DB databese directory cache on s3:fab-dharma-backup"
+echo "rclone sync of cache STARTED on" `date`
+echo "**   ************************************    ****"
+echo "Backing up XNAT-DB/archive directory"
+/usr/bin/rclone sync /data/XNAT-DB/cache/ s3remote:fab-dharma-backup/XNAT-DB/cache
+
+# Backing up dharma /data/XNAT-DB/ftp
+# Next the ftp
+echo "*** ftp ***********************************"
+echo "XNAT-DB databese directory ftp on s3:fab-dharma-backup"
+echo "rclone sync of ftp STARTED on" `date`
+echo "**   ************************************    ****"
+echo "Backing up XNAT-DB/ftp directory"
+/usr/bin/rclone sync /data/XNAT-DB/ftp/ s3remote:fab-dharma-backup/XNAT-DB/ftp
+
