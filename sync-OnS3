@@ -1,4 +1,11 @@
-#!
+#!/bin/sh
+
+# This are the new identifiers for the new Dell server Apr 2016
+RCLONE=/usr/bin/rclone 
+SSH=/usr/bin/ssh
+RHOST=drobo02 
+LCRONPATH=/home/xnat/cron
+
 # Using rclone to synt to an s3 bucket
 #
 
