@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Cloud backup of Dharma
+# Using rclone to sync to an s3 bucket
+# #### Bacup on s3 using rclone sync ******
+
+# Backup of archive
+echo "*** Archive **************************************"
+echo "XNAT-DB database directory backup on s3:fab-dharma-backup"
+echo "rclone sync of archive STARTED on" `date`
+echo "**   ************************************   ****"
+echo "Backing up XNAT-DB/archive directory"
+/usr/bin/rclone sync /data/XNAT-DB/prearchive/ s3remote:fab-dharma-backup/XNAT-DB/prearchive
+echo "rclone sync of archive FINISHED on" `date`
+echo "************************************************"
