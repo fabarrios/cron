@@ -29,6 +29,10 @@ echo "***************************************"
 echo "Backing up XNAT-DB/prearchive directory"
 $LCRONPATH/rsync-prearchiveOnDrobo02-backup
 echo "***************************************"
+# rsync-backupOnDrobo02-backup
+echo "Backing up XNAT-DB/backup directory"
+$LCRONPATH/rsync-backupOnDrobo02-backup
+echo "***************************************"
 
 # #### End bacup on Drobo02 using rsync
 echo "rsync ENDED on" `date`
