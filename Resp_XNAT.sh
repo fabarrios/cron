@@ -5,11 +5,11 @@ echo "**** ******* ******************** ********** ****"
 echo "XNAT-DB databese backup on data"
 echo "pgDump STARTED on" `date`
 
-echo "*********" | /usr/bin/sudo -S service tomcat7 stop
+echo "Raiz&Dharma" | /usr/bin/sudo -S service tomcat7 stop
 
 pass="xnat01"
 export PGPASSWORD="$pass"
-/usr/bin/pg_dump -v -i -U xnat01 -Fc xnat > /data/XNAT-DB/backup/xnat_$(date +%m%d%y).dump
+/usr/bin/pg_dump -v -i -U xnat01 -Fc xnat > /data/XNAT-DB/db_backup/xnat_$(date +%m%d%y).dump
 
 echo "Raiz&Dharma" | /usr/bin/sudo -S service tomcat7 start
 
