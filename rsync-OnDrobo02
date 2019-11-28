@@ -30,7 +30,7 @@ echo "Backing up XNAT-DB/prearchive directory"
 $LCRONPATH/rsync-prearchiveOnDrobo02-backup
 echo "***************************************"
 # rsync-backupOnDrobo02-backup
-echo "Backing up XNAT-DB/backup directory"
+echo "Backing up XNAT-DB/db_backup directory"
 $LCRONPATH/rsync-backupOnDrobo02-backup
 echo "***************************************"
 
