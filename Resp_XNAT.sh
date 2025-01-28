@@ -5,7 +5,7 @@ echo "**** ******* ******************** ********** ****"
 echo "XNAT-DB databese backup on data"
 echo "pgDump STARTED on" `date`
 
-echo "Raiz&Dharma" | /usr/bin/sudo -S service tomcat7 stop
+echo "-Dharma_passwd-" | /usr/bin/sudo -S service tomcat7 stop
 
 pass="xnat01"
 export PGPASSWORD="$pass"
